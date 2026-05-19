@@ -1,19 +1,22 @@
 # This file contains metadata for your plugin.
+# This file should be included when you package your plugin.
 
-# This file should be included when you package your plugin.# Mandatory items:
+# Mandatory items:
 
 [general]
 name=GeoPesca
-qgisMinimumVersion=3.0
-description=Este plugin calcula a partir de puntos GPS los trazados que realizan la flota artesanal, asi como las tandas de pesca de diferentes artes
-version=0.1
-author=Lucia Herrera
+qgisMinimumVersion=3.22
+description=GeoPESCA automatiza el análisis espacial de puntos GPS de embarcaciones artesanales y costeras del Cantábrico, genera sus trayectorias y detecta las zonas de pesca en base a unos parámetros como son la velocidad, continuidad espacial y distancias.
+version=0.1.0
+author=Lucia Herrera Rodriguez
 email=herrerarodriguezlucia08@gmail.com
 
-about=Este complemento busca automatizar el porceso de creción de los trazados realizados por la flota de acuerdo a la información registrada por los GPS de fecha y hora y localizción. Además calcula las tandas en ls que la flota pesca en función del arte empleado
+about=GeoPesca es un complemento desarrollado para QGIS que permite automatizar la generación de trayectorias y la detección de zonas de pesca artesanal a partir de datos GPS de embarcaciones. El complemento trabaja con capas en formato csv o GeoPackage de puntos georreferenciados que contienen información de localización, fecha y hora y código de embarcación. A partir de estos datos genera trayectorias, calcula variables espaciales y temporales como velocidad, distancia y tiempo entre puntos consecutivos, e identifica tandas de pesca en función del arte empleado y de distintos umbrales de análisis. Los resultados se exportan en formato GeoPackage como nuevas capas vectoriales para su visualización y análisis espacial dentro de QGIS. El desarrollo del complemento se realiza en el contexto del TFM del Máster en Geotecnología y Desarrollo de Proyectos SIG de la Universidad de Oviedo.
 
-tracker=http://localhost
-repository=http://localhost
+tracker=https://github.com/LuciaHerreraR/GeoPesca/issues
+repository=https://github.com/LuciaHerreraR/GeoPesca
+homepage=https://github.com/LuciaHerreraR/GeoPesca
+
 # End of mandatory metadata
 
 # Recommended items:
@@ -23,13 +26,13 @@ hasProcessingProvider=no
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python, pesca, gd
+tags=python, PyQGIS, pesca artesanal, zonas de pesca, trayectorias, GPS
 
-homepage=http://localhost
-category=Plugins
+category=Vector
 icon=icon.png
+
 # experimental flag
-experimental=False
+experimental=True
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
@@ -39,9 +42,8 @@ deprecated=False
 # Check the documentation for more information.
 # plugin_dependencies=
 
-Category of the plugin: Raster, Vector, Database or Web
+# Category of the plugin: Vector
 # category=
 
 # If the plugin can run on QGIS Server.
 server=False
-
