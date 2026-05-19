@@ -1,0 +1,47 @@
+# This file contains metadata for your plugin.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=GeoPesca
+qgisMinimumVersion=3.0
+description=Este plugin calcula a partir de puntos GPS los trazados que realizan la flota artesanal, asi como las tandas de pesca de diferentes artes
+version=0.1
+author=Lucia Herrera
+email=herrerarodriguezlucia08@gmail.com
+
+about=Este complemento busca automatizar el porceso de creción de los trazados realizados por la flota de acuerdo a la información registrada por los GPS de fecha y hora y localizción. Además calcula las tandas en ls que la flota pesca en función del arte empleado
+
+tracker=http://localhost
+repository=http://localhost
+# End of mandatory metadata
+
+# Recommended items:
+
+hasProcessingProvider=no
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=python, pesca, gd
+
+homepage=http://localhost
+category=Plugins
+icon=icon.png
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+
+# Since QGIS 3.8, a comma separated list of plugins to be installed
+# (or upgraded) can be specified.
+# Check the documentation for more information.
+# plugin_dependencies=
+
+Category of the plugin: Raster, Vector, Database or Web
+# category=
+
+# If the plugin can run on QGIS Server.
+server=False
+
