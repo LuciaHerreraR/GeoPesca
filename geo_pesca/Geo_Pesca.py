@@ -993,11 +993,6 @@ class geopesca:
            *min_lineas_tanda* segmentos Y su longitud total no supera
            *umbral_longitud_total_tanda*.
 
-        Umbral dinámico de velocidad
-        ----------------------------
-        Si el JSON del arte tiene ``"umbral_dinamico": true``, el
-        umbral superior de velocidad se ajusta al máximo entre el
-        valor fijo y 1.3 × la velocidad media de todos los segmentos.
 
         Los resultados se escriben directamente en los campos
         ``delta_ant``, ``delta_sig``, ``es_valida``, ``tanda`` y
@@ -1070,25 +1065,6 @@ class geopesca:
             key=lambda x: (x["barco"], x["jornada"], x["fecha_ini"].toSecsSinceEpoch())
         )
 
-        # ── UMBRAL DINÁMICO DE VELOCIDAD ─────────────────────────────
-        # Si el JSON del arte activa «umbral_dinamico», el umbral
-        # superior se recalcula como max(fijo, media × 1.3).
-        UMBRAL_NUDOS_DINAMICO = UMBRAL_NUDOS
-        usar_umbral_dinamico  = bool(
-            self.parametros_artes.get(arte_txt, {}).get("umbral_dinamico", False)
-        )
-
-        if usar_umbral_dinamico:
-            vels = [l["vel_nudos"] for l in lineas if l["vel_nudos"] > 0]
-            if vels:
-                vel_media             = sum(vels) / len(vels)
-                UMBRAL_NUDOS_DINAMICO = max(UMBRAL_NUDOS, vel_media * 1.3)
-            self.log(
-                f"Umbral dinámico activado para {arte_txt}: "
-                f"{round(UMBRAL_NUDOS_DINAMICO, 2)} nudos"
-            )
-        else:
-            self.log(f"Umbral fijo para {arte_txt}: {round(UMBRAL_NUDOS, 2)} nudos")
 
         # ── PASO 1: Clasificación individual de segmentos ─────────────
         for i, lin in enumerate(lineas):
@@ -1122,7 +1098,7 @@ class geopesca:
             # - O bien la velocidad está en el rango [min, max],
             #   o bien el segmento es muy corto (≤ umbral_distancia).
             en_rango_velocidad = (
-                UMBRAL_NUDOS_MIN <= lin["vel_nudos"] <= UMBRAL_NUDOS_DINAMICO
+                UMBRAL_NUDOS_MIN <= lin["vel_nudos"] <= UMBRAL_NUDOS
             )
             segmento_corto = lin["long_m"] <= UMBRAL_DISTANCIA_M
 
